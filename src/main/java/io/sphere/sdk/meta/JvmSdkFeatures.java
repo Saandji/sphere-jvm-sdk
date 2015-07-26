@@ -3,11 +3,83 @@ package io.sphere.sdk.meta;
 import io.sphere.sdk.models.Base;
 
 /**
+<!--
+ ## Why is it not called Java SDK?
 
+ * Android also uses Java programming language but we use Java 8 language features and JRE 8 features which are not available on Android.
+ * The SDK should also be great for other languages on the JVM like Scala (&lt;3), Groovy, Clojure, Kotlin, etc.
+
+
+ ## Parallel execution
+
+ * Java 8 {@link java.util.concurrent.CompletionStage}
+ * show example for two requests and then collect their results
+ * exception handling: show recover with completionstage
+ * ecosystem friendly, Scala 2.10, 2.11, 2.13; Play 2.2, Play 2.3, Play 2.4, Spring (planned), Rx (planned), Reactive Streams (WIP)
+
+ ## Libs
+
+ * Java money, show automatic formatting for country
+ * Java 8 datetime, show rendering for timezones
+ * Country code, display country (requires language)
+ * SLF4J, show cool fine granulated logging per endpoint and direction
+
+## SPHERE.IO Embedded Domain Specific Language
+
+ * Search
+ * Query
+ * Sort
+ * reference expansion + Expansion paths
+ * Typed models and predicates/sort etc. harder to make copy/paste errors
+ * fallbacks using Strings like in HTTP API
+ * immutable data, good for caching, functional programming within Java and Scala
+ * Scala addons, show example for predicate and sort without parenthesis
+
+ ## Modularity
+
+ * just use SPHERE.IO client for authentication
+ * use SDK with given models or it is possible to create own model representations and use custom JSON mappers
+ * testable client with fake return objects and JSON dumps
+ * custom objects with pojo or your preferred JSON mapper
+ * replaceable http client, tweakable concerning timeouts and parallelity
+
+ ## Great documentation
+
+ * Javadoc
+ * tutorials
+ * great error reports, show example exception, so details and link to javadoc with suggestions to recover
+ * code examples in Javadoc, compiled and integration tested
+ * UML, show exeption example (partial diagram)
+ * atNullable annotation, show example with yellow IDE markings, that a value could be null
+ * big release notes
+ * hosted on maven central
+
+ -->
+ <h3></h3>
+<ul>
+ <li></li>
+ <li>show examle</li>
+ <li></li>
+ <li></li>
+ <li></li>
+ <li></li>
+ <li></li>
+ </ul>
+
+
+
+
+
+
+
+
+
+
+<!--
 <h3>Embracing Java 8</h3>
  <p>The SDK API uses:</p>
  <ul>
-    <li>{@link java.util.concurrent.CompletionStage}</li>
+    <li></li>
     <li>{@link java.util.Optional}</li>
     <li>Java Date API: {@link java.time.ZonedDateTime}, {@link java.time.LocalDate} and {@link java.time.LocalTime}</li>
     <li>{@link java.util.function.Function}</li>
@@ -33,7 +105,7 @@ import io.sphere.sdk.models.Base;
 
  <h3>Domain specific languages to create requests</h3>
  <p>For example, {@link io.sphere.sdk.queries.QueryDsl} assists in formulating valid queries and to find out which attributes can be used in which way for querying and sorting.</p>
-
+-->
  */
 public final class JvmSdkFeatures extends Base {
     private JvmSdkFeatures() {
