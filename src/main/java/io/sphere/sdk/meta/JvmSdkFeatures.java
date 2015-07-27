@@ -56,26 +56,60 @@ import io.sphere.sdk.models.Base;
 
 
  <div>
- <h4>Other future implementations</h4>
+ <h4>Other future implementations (Scala!)</h4>
  <p>There add-ons to support other Future implementations such as Scalas Future (2.10, 2.11, 2.12) and Play Frameworks F.Promise (2.2, 2.3, 2.4).
  We also plan to support Spring, Rx and Reactive Streams.</p>
 
  </div>
  </div>
 
+<h3>Library Features</h3>
+
+ <div class="feature">
+     <img src="{@docRoot}/documentation-resources/images/features/money.png" alt="">
 
 
+     <div>
+     <h4>Java Money</h4>
+     <p>The SDK uses the Java Money library which makes it easy to retrieve
+ currencies and format monetary amounts for specific locales.</p>
+
+     </div>
+ </div>
+
+ <div class="feature">
+     <img src="{@docRoot}/documentation-resources/images/features/datetime.png" alt="">
+
+
+     <div>
+     <h4>Java 8 time classes</h4>
+     <p>In the SPHERE.IO models are the Java time classes used and they can conveniently formatted for specific time zones.</p>
+
+     </div>
+ </div>
+
+
+ <div class="feature">
+     <img src="{@docRoot}/documentation-resources/images/features/countrycode.png" alt="">
+
+
+     <div>
+     <h4>Country codes</h4>
+     <p>In the API country codes are represented as Strings, in the JVM SDK models it is {@link com.neovisionaries.i18n.CountryCode} from the nv-i18n library.
+ With the library you can format the country name according to a locale.</p>
+
+     </div>
+ </div>
 
 
 
  <!--
 
- ## Libs
-
- * Java money, show automatic formatting for country
- * Java 8 datetime, show rendering for timezones
- * Country code, display country (requires language)
- * SLF4J, show cool fine granulated logging per endpoint and direction
+## Logging
+ * SLF4J
+ * per endpoint
+ * per endpoint direction
+ * severity level examples
 
 ## SPHERE.IO Embedded Domain Specific Language
 
