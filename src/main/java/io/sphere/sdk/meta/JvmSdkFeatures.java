@@ -3,12 +3,13 @@ package io.sphere.sdk.meta;
 import io.sphere.sdk.models.Base;
 
 /**
+
+ <h3>Why is it not called Java SDK?</h3>
+ <p>Android also uses Java programming language but we use Java 8 language features and JRE 8 features which are not available on Android. The SDK should also be great for other languages on the JVM like Scala, Groovy, Clojure, Kotlin, etc.</p>
+
+
+
 <!--
- ## Why is it not called Java SDK?
-
- * Android also uses Java programming language but we use Java 8 language features and JRE 8 features which are not available on Android.
- * The SDK should also be great for other languages on the JVM like Scala (&lt;3), Groovy, Clojure, Kotlin, etc.
-
 
  ## Parallel execution
 
@@ -55,24 +56,6 @@ import io.sphere.sdk.models.Base;
  * hosted on maven central
 
  -->
- <h3></h3>
-<ul>
- <li></li>
- <li>show examle</li>
- <li></li>
- <li></li>
- <li></li>
- <li></li>
- <li></li>
- </ul>
-
-
-
-
-
-
-
-
 
 
 <!--
