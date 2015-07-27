@@ -9,14 +9,66 @@ import io.sphere.sdk.models.Base;
 
 
 
-<!--
+<h3>Parallelity Features</h3>
 
- ## Parallel execution
 
- * Java 8 {@link java.util.concurrent.CompletionStage}
- * show example for two requests and then collect their results
- * exception handling: show recover with completionstage
- * ecosystem friendly, Scala 2.10, 2.11, 2.13; Play 2.2, Play 2.3, Play 2.4, Spring (planned), Rx (planned), Reactive Streams (WIP)
+ <div class="feature">
+ <img src="{@docRoot}/documentation-resources/images/features/async-execution.png" alt="executes a sphere requests and registers a callback">
+
+
+ <div>
+ <h4>Non-blocking</h4>
+ <p>API calls can take time and to save CPU cycles threads are not blocked.</p>
+
+ </div>
+ </div>
+
+
+ <div class="feature">
+    <img src="{@docRoot}/documentation-resources/images/features/parallel-execution.png" alt="executes two SPHERE.IO requests in parallel">
+
+
+     <div>
+        <h4>Parallel execution</h4>
+        For high performance you should parallelize as much requests as possible.
+        By using {@link java.util.concurrent.CompletionStage} from Java it is easy to start parallel asynchronous
+        calls and combine them into a single {@link java.util.concurrent.CompletionStage}.
+
+     </div>
+ </div>
+
+
+ <div class="feature">
+    <img src="{@docRoot}/documentation-resources/images/features/recover-async-execution.png" alt="executes two SPHERE.IO requests in parallel">
+
+
+     <div>
+        <h4>Recover from Exceptions</h4>
+        <p>API requests can fail due to network errors and other sources. With the JVM SDK it is easy to code a plan B instead of crashing.</p>
+
+     </div>
+ </div>
+
+
+
+ <div class="feature">
+ <img src="{@docRoot}/documentation-resources/images/features/scala-futures.png" alt="">
+
+
+ <div>
+ <h4>Other future implementations</h4>
+ <p>There add-ons to support other Future implementations such as Scalas Future (2.10, 2.11, 2.12) and Play Frameworks F.Promise (2.2, 2.3, 2.4).
+ We also plan to support Spring, Rx and Reactive Streams.</p>
+
+ </div>
+ </div>
+
+
+
+
+
+
+ <!--
 
  ## Libs
 
