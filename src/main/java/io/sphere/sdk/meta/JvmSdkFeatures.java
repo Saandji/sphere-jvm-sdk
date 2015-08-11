@@ -101,14 +101,46 @@ import io.sphere.sdk.models.Base;
      </div>
  </div>
 
+ <h3>Logging</h3>
+ <p>For logging is SLF4J used.</p>
 
+ <div class="feature">
+ <img src="{@docRoot}/documentation-resources/images/features/fine-granular-log-levels.png" alt="">
+
+
+ <div>
+ <h4>Granular logging</h4>
+ <p>For each commercetools platform resource you can specify a custom log level.
+ More over it is possible to set the level for request or response objects and fine-tune them for read and write access to the API.</p>
+
+ </div>
+ </div>
+
+ <div class="feature">
+ <img src="{@docRoot}/documentation-resources/images/features/object-logging.png" alt="">
+
+
+ <div>
+ <h4>Debug level logs the Java objects</h4>
+ <p>With the Java objects you can analyse the data.</p>
+
+ </div>
+ </div>
+
+ <div class="feature">
+ <img src="{@docRoot}/documentation-resources/images/features/trace-pretty-printed-json.png" alt="">
+
+
+ <div>
+ <h4>Trace level logs the the JSON objects in a pretty printed way</h4>
+ <p>This way you can directly analyze what is sent or get from the commercetools platform HTTP API.</p>
+
+ </div>
+ </div>
 
  <!--
 
 ## Logging
- * SLF4J
- * per endpoint
- * per endpoint direction
  * severity level examples
 
 ## SPHERE.IO Embedded Domain Specific Language
@@ -139,7 +171,8 @@ import io.sphere.sdk.models.Base;
  * UML, show exeption example (partial diagram)
  * atNullable annotation, show example with yellow IDE markings, that a value could be null
  * big release notes
- * hosted on maven central
+ * hosted on maven central\
+ * toString, similar hashCode and equals
 
  -->
 

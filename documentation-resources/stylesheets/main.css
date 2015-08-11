@@ -124,6 +124,7 @@ tr {
 
 div.feature img{
     float: left;
+    margin-right: 1em;
 }
 
 .clearfix:after, div.feature:after {
