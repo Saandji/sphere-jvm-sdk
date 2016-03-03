@@ -127,6 +127,15 @@ div.feature img{
     margin-right: 1em;
 }
 
+div.feature .code-example p {
+    visibility: hidden;
+}
+div.feature .code-example{
+    float: left;
+    margin-right: 1em;
+    width: 600px;
+}
+
 .clearfix:after, div.feature:after {
     clear: both;
     content: ".";

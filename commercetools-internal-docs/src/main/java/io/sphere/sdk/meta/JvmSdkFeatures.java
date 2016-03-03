@@ -13,8 +13,7 @@ import io.sphere.sdk.models.Base;
 
 
  <div class="feature">
- <img src="{@docRoot}/resources/images/features/async-execution.png" alt="executes a sphere requests and registers a callback">
-
+ {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#asyncExecutionDemo()}
 
  <div>
  <h4>Non-blocking</h4>
@@ -25,7 +24,7 @@ import io.sphere.sdk.models.Base;
 
 
  <div class="feature">
- <img src="{@docRoot}/resources/images/features/parallel-execution.png" alt="executes two SPHERE.IO requests in parallel">
+ {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#parallelExecutionDemo()}
 
 
  <div>
@@ -39,8 +38,7 @@ import io.sphere.sdk.models.Base;
 
 
  <div class="feature">
- <img src="{@docRoot}/resources/images/features/recover-async-execution.png" alt="executes two SPHERE.IO requests in parallel">
-
+ {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#recoverDemo()}
 
  <div>
  <h4>Recover from Exceptions</h4>
@@ -66,7 +64,7 @@ import io.sphere.sdk.models.Base;
  <h3>Library Features</h3>
 
  <div class="feature">
- <img src="{@docRoot}/resources/images/features/money.png" alt="">
+ {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#moneyDemo()}
 
 
  <div>
@@ -78,7 +76,7 @@ import io.sphere.sdk.models.Base;
  </div>
 
  <div class="feature">
- <img src="{@docRoot}/resources/images/features/datetime.png" alt="">
+ {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#dateTimeDemo()}
 
 
  <div>
@@ -90,7 +88,7 @@ import io.sphere.sdk.models.Base;
 
 
  <div class="feature">
- <img src="{@docRoot}/resources/images/features/countrycode.png" alt="">
+ {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#countryCodeDemo()}
 
 
  <div>
@@ -111,7 +109,8 @@ import io.sphere.sdk.models.Base;
  <div>
  <h4>Granular logging</h4>
  <p>For each commercetools platform resource you can specify a custom log level.
- More over it is possible to set the level for request or response objects and fine-tune them for read and write access to the API.</p>
+ More over it is possible to set the level for request or response objects and fine-tune them for read and write access to the API.
+ (Image shows example config with logback.)</p>
 
  </div>
  </div>
@@ -138,18 +137,38 @@ import io.sphere.sdk.models.Base;
  </div>
  </div>
 
- <!--
+ <h3>Domain Specific Languages for creating requests</h3>
 
- ## Logging
- * severity level examples
+ <div class="feature"> {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#productSearchDemo()}
+     <div>
+         <h4>Product Search</h4>
+         <p>Product Search is one of the most important parts of a web shop and with the JVM SDK you will be supported to create
+         powerfull requests.</p>
+     </div>
+ </div>
+ <div class="feature"> {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#queryDemo()}
+     <div>
+         <h4>Query</h4>
+         <p>Creating queries for deep nested objects works like a charm.</p>
+     </div>
+ </div>
+ <div class="feature"> {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#referenceExpansion()}
+     <div>
+         <h4>Reference Expansion</h4>
+         <p>Fetching multiple objects in in request can be done by reference expansion.</p>
+     </div>
+ </div>
+ <div class="feature"> {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#typeSafe()}
+     <div>
+         <h4>Type-safety</h4>
+         <p>In a useful way objects are typed and so the compiler checks for some copy paste errors.</p>
+     </div>
+ </div>
+
+ <!--
 
  ## SPHERE.IO Embedded Domain Specific Language
 
- * Search
- * Query
- * Sort
- * reference expansion + Expansion paths
- * Typed models and predicates/sort etc. harder to make copy/paste errors
  * fallbacks using Strings like in HTTP API
  * immutable data, good for caching, functional programming within Java and Scala
  * Scala addons, show example for predicate and sort without parenthesis
@@ -168,7 +187,7 @@ import io.sphere.sdk.models.Base;
  * tutorials
  * great error reports, show example exception, so details and link to javadoc with suggestions to recover
  * code examples in Javadoc, compiled and integration tested
- * UML, show exeption example (partial diagram)
+ * UML, show exception example (partial diagram)
  * atNullable annotation, show example with yellow IDE markings, that a value could be null
  * big release notes
  * hosted on maven central\
