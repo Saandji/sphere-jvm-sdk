@@ -33,6 +33,7 @@ import java.util.Locale;
 import java.util.concurrent.CompletionStage;
 
 import static io.sphere.sdk.models.DefaultCurrencyUnits.*;
+import static java.util.Arrays.asList;
 import static java.util.Locale.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -177,5 +178,17 @@ public class JvmSdkFeaturesTest {
                 .plusPredicates(predicate);//compiles
         //OrderQuery.of()//wrong context
         //.plusPredicates(predicate);//doesn't compile
+    }
+
+    @Test
+    public void stringFallback() {
+        final QueryPredicate<Product> safePredicate = ProductQueryModel.of()
+                .masterData().current().name()
+                .lang(ENGLISH).isIn(asList("foo", "bar"));
+        final String s =
+                "masterData(current(name(en in (\"foo\", \"bar\"))))";
+        final QueryPredicate<Product> unsafePredicate =
+                QueryPredicate.of(s);
+        assertThat(unsafePredicate).isEqualTo(safePredicate);
     }
 }

@@ -164,12 +164,17 @@ import io.sphere.sdk.models.Base;
          <p>In a useful way objects are typed and so the compiler checks for some copy paste errors.</p>
      </div>
  </div>
+ <div class="feature"> {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#stringFallback()}
+     <div>
+         <h4>Flexibility above the JVM SDK core</h4>
+         <p>Even if a predicate, an expansion path or a sort expression is not yet supported in the SDK String expressions can be used as fallback.</p>
+     </div>
+ </div>
 
  <!--
 
  ## SPHERE.IO Embedded Domain Specific Language
 
- * fallbacks using Strings like in HTTP API
  * immutable data, good for caching, functional programming within Java and Scala
  * Scala addons, show example for predicate and sort without parenthesis
 
