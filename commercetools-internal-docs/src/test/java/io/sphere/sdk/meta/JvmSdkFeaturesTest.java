@@ -3,6 +3,7 @@ package io.sphere.sdk.meta;
 import com.neovisionaries.i18n.CountryCode;
 import io.sphere.sdk.carts.Cart;
 import io.sphere.sdk.carts.queries.*;
+import io.sphere.sdk.categories.queries.CategoryQuery;
 import io.sphere.sdk.client.BlockingSphereClient;
 import io.sphere.sdk.client.SphereClient;
 import io.sphere.sdk.client.SphereRequest;
@@ -11,6 +12,7 @@ import io.sphere.sdk.customers.queries.CustomerQuery;
 import io.sphere.sdk.orders.ShipmentState;
 import io.sphere.sdk.orders.queries.OrderQuery;
 import io.sphere.sdk.products.Product;
+import io.sphere.sdk.products.ProductProjection;
 import io.sphere.sdk.products.queries.*;
 import io.sphere.sdk.products.search.ProductProjectionSearch;
 import io.sphere.sdk.queries.QueryPredicate;
@@ -190,5 +192,19 @@ public class JvmSdkFeaturesTest {
         final QueryPredicate<Product> unsafePredicate =
                 QueryPredicate.of(s);
         assertThat(unsafePredicate).isEqualTo(safePredicate);
+    }
+
+    @Test
+    public void immutability() {
+        final ProductProjection product = getProduct();
+        //product.setName("new name");//no bean setter
+
+        final CategoryQuery query = CategoryQuery.of();
+        final CategoryQuery query2 = query.withLimit(30);
+        assertThat(query == query2).isFalse();
+    }
+
+    private ProductProjection getProduct() {
+        return null;
     }
 }

@@ -170,13 +170,20 @@ import io.sphere.sdk.models.Base;
          <p>Even if a predicate, an expansion path or a sort expression is not yet supported in the SDK String expressions can be used as fallback.</p>
      </div>
  </div>
+ <div class="feature"> {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#immutability()}
+     <div>
+         <h4>Immutability</h4>
+         <p>Immutable objects can be freely shared in a multi-threaded environment.
+ The JVM SDK resource types are immutable by default. Also typical requests are immutable and
+ provide an API to create adjusted copies which fit well in a functional programming style.</p>
+     </div>
+ </div>
+
+ <h3>Modularity</h3>
+
+
 
  <!--
-
- ## SPHERE.IO Embedded Domain Specific Language
-
- * immutable data, good for caching, functional programming within Java and Scala
- * Scala addons, show example for predicate and sort without parenthesis
 
  ## Modularity
 
