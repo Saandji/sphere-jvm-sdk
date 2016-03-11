@@ -1,26 +1,35 @@
 package io.sphere.sdk.meta;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.neovisionaries.i18n.CountryCode;
 import io.sphere.sdk.carts.Cart;
 import io.sphere.sdk.carts.queries.*;
+import io.sphere.sdk.categories.*;
+import io.sphere.sdk.categories.Category;
+import io.sphere.sdk.categories.queries.CategoryByIdGet;
 import io.sphere.sdk.categories.queries.CategoryQuery;
-import io.sphere.sdk.client.BlockingSphereClient;
-import io.sphere.sdk.client.SphereClient;
-import io.sphere.sdk.client.SphereRequest;
+import io.sphere.sdk.client.*;
 import io.sphere.sdk.customers.Customer;
 import io.sphere.sdk.customers.queries.CustomerQuery;
+import io.sphere.sdk.http.AsyncHttpClientAdapter;
+import io.sphere.sdk.http.HttpClient;
+import io.sphere.sdk.http.HttpResponse;
 import io.sphere.sdk.orders.ShipmentState;
 import io.sphere.sdk.orders.queries.OrderQuery;
 import io.sphere.sdk.products.Product;
 import io.sphere.sdk.products.ProductProjection;
 import io.sphere.sdk.products.queries.*;
+import io.sphere.sdk.products.search.PriceSelection;
 import io.sphere.sdk.products.search.ProductProjectionSearch;
 import io.sphere.sdk.queries.QueryPredicate;
 import io.sphere.sdk.reviews.Review;
 import io.sphere.sdk.reviews.queries.ReviewByIdGet;
 import io.sphere.sdk.reviews.queries.ReviewQuery;
 import io.sphere.sdk.reviews.queries.ReviewQueryModel;
+import io.sphere.sdk.search.PagedSearchResult;
 import io.sphere.sdk.utils.MoneyImpl;
+import org.asynchttpclient.DefaultAsyncHttpClient;
+import org.asynchttpclient.DefaultAsyncHttpClientConfig;
 import org.junit.Test;
 
 import javax.money.Monetary;
@@ -33,6 +42,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Currency;
 import java.util.Locale;
 import java.util.concurrent.CompletionStage;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 import static io.sphere.sdk.models.DefaultCurrencyUnits.*;
 import static java.util.Arrays.asList;
@@ -206,5 +217,66 @@ public class JvmSdkFeaturesTest {
 
     private ProductProjection getProduct() {
         return null;
+    }
+
+    public void justAuth() {
+        final SphereAuthConfig authConfig = SphereAuthConfig
+                .of("project-key", "clientId", "clientSecret");
+        final CompletionStage<String> accesstokenStage =
+                TokensFacade.fetchAccessToken(authConfig);
+    }
+
+    public void jsonModels() {
+        final ProductProjectionSearch searchWithJavaModel =
+                ProductProjectionSearch.ofStaged()
+                .withPriceSelection(PriceSelection.of(EUR))
+                .withExpansionPaths(m -> m.categories())
+                .withSort(m -> m.createdAt().desc())
+                .withLimit(10);
+        final PagedSearchResult<ProductProjection> result =
+                client.executeBlocking(searchWithJavaModel);
+        final JsonNodeSphereRequest jsonNodeSphereRequest =
+                JsonNodeSphereRequest.of(searchWithJavaModel);
+        assertThat(searchWithJavaModel.httpRequestIntent())
+                .isEqualTo(jsonNodeSphereRequest.httpRequestIntent());
+        //different output
+        final JsonNode jsonNode =
+                client.executeBlocking(jsonNodeSphereRequest);
+    }
+
+    @Test
+    public void testDoubleForRequest() {
+        final SphereClient asyncClient = TestDoubleSphereClientFactory
+                .createHttpTestDouble(httpRequest ->
+                        HttpResponse.of(200, "{\n" +
+                        "    \"id\" : \"category-id\",\n" +
+                        "    \"version\" : 1,\n" +
+                        "    \"name\" : {\n" +
+                        "        \"en\" : \"engl. name\"\n" +
+                        "    },\n" +
+                        "    \"slug\" : {\n" +
+                        "        \"en\" : \"slug\"\n" +
+                        "    }\n" +
+                        "}"));
+        final BlockingSphereClient client = BlockingSphereClient
+                .of(asyncClient, 3, TimeUnit.SECONDS);
+        final Category category =
+                client.executeBlocking(CategoryByIdGet.of("category-id"));
+        assertThat(category.getName().get(ENGLISH)).isEqualTo("engl. name");
+    }
+
+    public void replaceableHttpClient() {
+        final String[] enabledProtocols = {"TLSv1.1", "TLSv1.2"};
+        final DefaultAsyncHttpClientConfig config =
+                new DefaultAsyncHttpClientConfig.Builder()
+                        .setEnabledProtocols(enabledProtocols)
+                        .build();
+        final Supplier<HttpClient> httpClientSupplier =
+                () -> AsyncHttpClientAdapter
+                        .of((new DefaultAsyncHttpClient(config)));
+        final SphereClientFactory factory =
+                SphereClientFactory.of(httpClientSupplier);
+        final SphereClient client =
+                factory.createClient("project-key", "clientId", "clientSec");
     }
 }

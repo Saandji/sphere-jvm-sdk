@@ -181,17 +181,41 @@ import io.sphere.sdk.models.Base;
 
  <h3>Modularity</h3>
 
+ <div class="feature"> {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#justAuth()}
+ <div>
+ <h4>It is possible to just use the SDK to get an access token</h4>
+ <p>The JVM SDK enables you to fetch an access token for a commercetools platform project.</p>
+ </div>
+ </div>
 
+ <div class="feature"> {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#jsonModels()}
+ <div>
+ <h4>Java models not required but provided</h4>
+ <p>If the Java models don't fit you use cases you can create your own model classes or just use directly JSON in Java.</p>
+ </div>
+ </div>
+
+
+ <div class="feature"> {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#testDoubleForRequest()}
+ <div>
+ <h4>Testable request and response handling</h4>
+ <p>If the Java models don't fit you use cases you can create your own model classes or just use directly JSON in Java.</p>
+ </div>
+ </div>
+
+ <div class="feature"> {@include.example io.sphere.sdk.meta.JvmSdkFeaturesTest#replaceableHttpClient()}
+ <div>
+ <h4>JVM SDK supports multiple HTTP client implementation for compatibility and speed</h4>
+ <p>Async HTTP client is a very fast and verbose HTTP client but has problems in some projects concerning compatibility of this library and to the netty library.
+ This can be solved by picking a specific version or fall back to the Apache HTTP client. Also it is possible to configure the underlying client for example to deal with proxies.</p>
+ </div>
+ </div>
 
  <!--
 
  ## Modularity
 
- * just use SPHERE.IO client for authentication
- * use SDK with given models or it is possible to create own model representations and use custom JSON mappers
- * testable client with fake return objects and JSON dumps
  * custom objects with pojo or your preferred JSON mapper
- * replaceable http client, tweakable concerning timeouts and parallelity
 
  ## Great documentation
 
